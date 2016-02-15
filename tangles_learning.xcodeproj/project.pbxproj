@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AADE80EF1C720EC700C53950 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE80EE1C720EC700C53950 /* main.cpp */; };
+		AADE80F71C72116200C53950 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE80F61C72116200C53950 /* libglfw3.a */; };
+		AADE80FE1C7213A300C53950 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE80FC1C7213A300C53950 /* draw.cpp */; };
+		AADE81021C72175A00C53950 /* polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81011C72175A00C53950 /* polyline.cpp */; };
+		AADE81051C72179F00C53950 /* polygon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81031C72179F00C53950 /* polygon.cpp */; };
+		AADE81071C721BE200C53950 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE81061C721BE200C53950 /* OpenGL.framework */; };
+		AADE81091C721BEE00C53950 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE81081C721BEE00C53950 /* Cocoa.framework */; };
+		AADE810B1C721C1700C53950 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE810A1C721C1700C53950 /* IOKit.framework */; };
+		AADE810D1C721C2300C53950 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE810C1C721C2300C53950 /* CoreVideo.framework */; };
+		AADE814C1C721F6300C53950 /* format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81171C721F5000C53950 /* format.cpp */; };
+		AADE814D1C721F6E00C53950 /* nanovg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81451C721F5000C53950 /* nanovg.cpp */; };
+		AADE814E1C721F7400C53950 /* nanovg_gl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81481C721F5000C53950 /* nanovg_gl2.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AADE80E91C720EC700C53950 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AADE80EB1C720EC700C53950 /* tangles_learning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tangles_learning; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADE80EE1C720EC700C53950 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AADE80F61C72116200C53950 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = tangles_learning/external/glfw/libglfw3.a; sourceTree = "<group>"; };
+		AADE80F81C72122000C53950 /* ui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ui.h; sourceTree = "<group>"; };
+		AADE80F91C72126400C53950 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		AADE80FA1C7212FF00C53950 /* vmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vmath.h; sourceTree = "<group>"; };
+		AADE80FB1C72135400C53950 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
+		AADE80FC1C7213A300C53950 /* draw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = draw.cpp; sourceTree = "<group>"; };
+		AADE80FD1C7213A300C53950 /* draw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = draw.h; sourceTree = "<group>"; };
+		AADE80FF1C7214A000C53950 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		AADE81001C72163300C53950 /* polyline.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = polyline.h; sourceTree = "<group>"; };
+		AADE81011C72175A00C53950 /* polyline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polyline.cpp; sourceTree = "<group>"; };
+		AADE81031C72179F00C53950 /* polygon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polygon.cpp; sourceTree = "<group>"; };
+		AADE81041C72179F00C53950 /* polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = polygon.h; sourceTree = "<group>"; };
+		AADE81061C721BE200C53950 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		AADE81081C721BEE00C53950 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		AADE810A1C721C1700C53950 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		AADE810C1C721C2300C53950 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		AADE81171C721F5000C53950 /* format.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = format.cpp; sourceTree = "<group>"; };
+		AADE81181C721F5000C53950 /* format.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = format.h; sourceTree = "<group>"; };
+		AADE811A1C721F5000C53950 /* glfw3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3.h; sourceTree = "<group>"; };
+		AADE811B1C721F5000C53950 /* glfw3native.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glfw3native.h; sourceTree = "<group>"; };
+		AADE811C1C721F5000C53950 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libglfw3.a; sourceTree = "<group>"; };
+		AADE811E1C721F5000C53950 /* button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = button.h; sourceTree = "<group>"; };
+		AADE811F1C721F5000C53950 /* checkbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = checkbox.h; sourceTree = "<group>"; };
+		AADE81201C721F5000C53950 /* colorpicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = colorpicker.h; sourceTree = "<group>"; };
+		AADE81211C721F5000C53950 /* colorwheel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = colorwheel.h; sourceTree = "<group>"; };
+		AADE81221C721F5000C53950 /* combobox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = combobox.h; sourceTree = "<group>"; };
+		AADE81231C721F5000C53950 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		AADE81241C721F5000C53950 /* darwin.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = darwin.mm; sourceTree = "<group>"; };
+		AADE81251C721F5000C53950 /* entypo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = entypo.h; sourceTree = "<group>"; };
+		AADE81261C721F5000C53950 /* formhelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = formhelper.h; sourceTree = "<group>"; };
+		AADE81271C721F5000C53950 /* glutil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glutil.h; sourceTree = "<group>"; };
+		AADE81281C721F5000C53950 /* graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = graph.h; sourceTree = "<group>"; };
+		AADE81291C721F5000C53950 /* imagepanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imagepanel.h; sourceTree = "<group>"; };
+		AADE812A1C721F5000C53950 /* imageview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imageview.h; sourceTree = "<group>"; };
+		AADE812B1C721F5000C53950 /* label.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = label.h; sourceTree = "<group>"; };
+		AADE812C1C721F5000C53950 /* layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = layout.h; sourceTree = "<group>"; };
+		AADE812D1C721F5000C53950 /* libnanogui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnanogui.a; sourceTree = "<group>"; };
+		AADE812E1C721F5000C53950 /* messagedialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = messagedialog.h; sourceTree = "<group>"; };
+		AADE812F1C721F5000C53950 /* nanogui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanogui.h; sourceTree = "<group>"; };
+		AADE81301C721F5000C53950 /* object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
+		AADE81311C721F5000C53950 /* opengl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = opengl.h; sourceTree = "<group>"; };
+		AADE81321C721F5000C53950 /* popup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = popup.h; sourceTree = "<group>"; };
+		AADE81331C721F5000C53950 /* popupbutton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = popupbutton.h; sourceTree = "<group>"; };
+		AADE81341C721F5000C53950 /* progressbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = progressbar.h; sourceTree = "<group>"; };
+		AADE81351C721F5000C53950 /* screen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = screen.h; sourceTree = "<group>"; };
+		AADE81361C721F5000C53950 /* slider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = slider.h; sourceTree = "<group>"; };
+		AADE81371C721F5000C53950 /* textbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = textbox.h; sourceTree = "<group>"; };
+		AADE81381C721F5000C53950 /* theme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = theme.h; sourceTree = "<group>"; };
+		AADE81391C721F5000C53950 /* toolbutton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toolbutton.h; sourceTree = "<group>"; };
+		AADE813A1C721F5000C53950 /* vscrollpanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vscrollpanel.h; sourceTree = "<group>"; };
+		AADE813B1C721F5000C53950 /* widget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = widget.h; sourceTree = "<group>"; };
+		AADE813C1C721F5000C53950 /* window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = window.h; sourceTree = "<group>"; };
+		AADE813E1C721F5000C53950 /* nanosvg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanosvg.h; sourceTree = "<group>"; };
+		AADE813F1C721F5000C53950 /* nanosvgrast.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanosvgrast.h; sourceTree = "<group>"; };
+		AADE81411C721F5000C53950 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		AADE81421C721F5000C53950 /* fontstash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fontstash.h; sourceTree = "<group>"; };
+		AADE81431C721F5000C53950 /* libnanovg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnanovg.a; sourceTree = "<group>"; };
+		AADE81441C721F5000C53950 /* nanovg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = nanovg.a; sourceTree = "<group>"; };
+		AADE81451C721F5000C53950 /* nanovg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = nanovg.cpp; sourceTree = "<group>"; };
+		AADE81461C721F5000C53950 /* nanovg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanovg.h; sourceTree = "<group>"; };
+		AADE81471C721F5000C53950 /* nanovg_gl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanovg_gl.h; sourceTree = "<group>"; };
+		AADE81481C721F5000C53950 /* nanovg_gl2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = nanovg_gl2.cpp; sourceTree = "<group>"; };
+		AADE81491C721F5000C53950 /* nanovg_gl_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanovg_gl_utils.h; sourceTree = "<group>"; };
+		AADE814A1C721F5000C53950 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		AADE814B1C721F5000C53950 /* stb_truetype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_truetype.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AADE80E81C720EC700C53950 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADE80F71C72116200C53950 /* libglfw3.a in Frameworks */,
+				AADE810D1C721C2300C53950 /* CoreVideo.framework in Frameworks */,
+				AADE81091C721BEE00C53950 /* Cocoa.framework in Frameworks */,
+				AADE810B1C721C1700C53950 /* IOKit.framework in Frameworks */,
+				AADE81071C721BE200C53950 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AADE80E21C720EC700C53950 = {
+			isa = PBXGroup;
+			children = (
+				AADE810C1C721C2300C53950 /* CoreVideo.framework */,
+				AADE810A1C721C1700C53950 /* IOKit.framework */,
+				AADE81081C721BEE00C53950 /* Cocoa.framework */,
+				AADE81061C721BE200C53950 /* OpenGL.framework */,
+				AADE80F61C72116200C53950 /* libglfw3.a */,
+				AADE80ED1C720EC700C53950 /* tangles_learning */,
+				AADE80EC1C720EC700C53950 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AADE80EC1C720EC700C53950 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AADE80EB1C720EC700C53950 /* tangles_learning */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AADE80ED1C720EC700C53950 /* tangles_learning */ = {
+			isa = PBXGroup;
+			children = (
+				AADE81161C721F5000C53950 /* external */,
+				AADE80EE1C720EC700C53950 /* main.cpp */,
+				AADE80F81C72122000C53950 /* ui.h */,
+				AADE80F91C72126400C53950 /* common.h */,
+				AADE80FA1C7212FF00C53950 /* vmath.h */,
+				AADE80FB1C72135400C53950 /* image.h */,
+				AADE80FC1C7213A300C53950 /* draw.cpp */,
+				AADE80FD1C7213A300C53950 /* draw.h */,
+				AADE80FF1C7214A000C53950 /* config.h */,
+				AADE81001C72163300C53950 /* polyline.h */,
+				AADE81011C72175A00C53950 /* polyline.cpp */,
+				AADE81031C72179F00C53950 /* polygon.cpp */,
+				AADE81041C72179F00C53950 /* polygon.h */,
+			);
+			path = tangles_learning;
+			sourceTree = "<group>";
+		};
+		AADE81161C721F5000C53950 /* external */ = {
+			isa = PBXGroup;
+			children = (
+				AADE81171C721F5000C53950 /* format.cpp */,
+				AADE81181C721F5000C53950 /* format.h */,
+				AADE81191C721F5000C53950 /* glfw */,
+				AADE811D1C721F5000C53950 /* nanogui */,
+				AADE813D1C721F5000C53950 /* nanosvg */,
+				AADE81401C721F5000C53950 /* nanovg */,
+			);
+			path = external;
+			sourceTree = "<group>";
+		};
+		AADE81191C721F5000C53950 /* glfw */ = {
+			isa = PBXGroup;
+			children = (
+				AADE811A1C721F5000C53950 /* glfw3.h */,
+				AADE811B1C721F5000C53950 /* glfw3native.h */,
+				AADE811C1C721F5000C53950 /* libglfw3.a */,
+			);
+			path = glfw;
+			sourceTree = "<group>";
+		};
+		AADE811D1C721F5000C53950 /* nanogui */ = {
+			isa = PBXGroup;
+			children = (
+				AADE811E1C721F5000C53950 /* button.h */,
+				AADE811F1C721F5000C53950 /* checkbox.h */,
+				AADE81201C721F5000C53950 /* colorpicker.h */,
+				AADE81211C721F5000C53950 /* colorwheel.h */,
+				AADE81221C721F5000C53950 /* combobox.h */,
+				AADE81231C721F5000C53950 /* common.h */,
+				AADE81241C721F5000C53950 /* darwin.mm */,
+				AADE81251C721F5000C53950 /* entypo.h */,
+				AADE81261C721F5000C53950 /* formhelper.h */,
+				AADE81271C721F5000C53950 /* glutil.h */,
+				AADE81281C721F5000C53950 /* graph.h */,
+				AADE81291C721F5000C53950 /* imagepanel.h */,
+				AADE812A1C721F5000C53950 /* imageview.h */,
+				AADE812B1C721F5000C53950 /* label.h */,
+				AADE812C1C721F5000C53950 /* layout.h */,
+				AADE812D1C721F5000C53950 /* libnanogui.a */,
+				AADE812E1C721F5000C53950 /* messagedialog.h */,
+				AADE812F1C721F5000C53950 /* nanogui.h */,
+				AADE81301C721F5000C53950 /* object.h */,
+				AADE81311C721F5000C53950 /* opengl.h */,
+				AADE81321C721F5000C53950 /* popup.h */,
+				AADE81331C721F5000C53950 /* popupbutton.h */,
+				AADE81341C721F5000C53950 /* progressbar.h */,
+				AADE81351C721F5000C53950 /* screen.h */,
+				AADE81361C721F5000C53950 /* slider.h */,
+				AADE81371C721F5000C53950 /* textbox.h */,
+				AADE81381C721F5000C53950 /* theme.h */,
+				AADE81391C721F5000C53950 /* toolbutton.h */,
+				AADE813A1C721F5000C53950 /* vscrollpanel.h */,
+				AADE813B1C721F5000C53950 /* widget.h */,
+				AADE813C1C721F5000C53950 /* window.h */,
+			);
+			path = nanogui;
+			sourceTree = "<group>";
+		};
+		AADE813D1C721F5000C53950 /* nanosvg */ = {
+			isa = PBXGroup;
+			children = (
+				AADE813E1C721F5000C53950 /* nanosvg.h */,
+				AADE813F1C721F5000C53950 /* nanosvgrast.h */,
+			);
+			path = nanosvg;
+			sourceTree = "<group>";
+		};
+		AADE81401C721F5000C53950 /* nanovg */ = {
+			isa = PBXGroup;
+			children = (
+				AADE81411C721F5000C53950 /* build.sh */,
+				AADE81421C721F5000C53950 /* fontstash.h */,
+				AADE81431C721F5000C53950 /* libnanovg.a */,
+				AADE81441C721F5000C53950 /* nanovg.a */,
+				AADE81451C721F5000C53950 /* nanovg.cpp */,
+				AADE81461C721F5000C53950 /* nanovg.h */,
+				AADE81471C721F5000C53950 /* nanovg_gl.h */,
+				AADE81481C721F5000C53950 /* nanovg_gl2.cpp */,
+				AADE81491C721F5000C53950 /* nanovg_gl_utils.h */,
+				AADE814A1C721F5000C53950 /* stb_image.h */,
+				AADE814B1C721F5000C53950 /* stb_truetype.h */,
+			);
+			path = nanovg;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AADE80EA1C720EC700C53950 /* tangles_learning */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADE80F21C720EC700C53950 /* Build configuration list for PBXNativeTarget "tangles_learning" */;
+			buildPhases = (
+				AADE80E71C720EC700C53950 /* Sources */,
+				AADE80E81C720EC700C53950 /* Frameworks */,
+				AADE80E91C720EC700C53950 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tangles_learning;
+			productName = tangles_learning;
+			productReference = AADE80EB1C720EC700C53950 /* tangles_learning */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AADE80E31C720EC700C53950 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = csantoni;
+				TargetAttributes = {
+					AADE80EA1C720EC700C53950 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = AADE80E61C720EC700C53950 /* Build configuration list for PBXProject "tangles_learning" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AADE80E21C720EC700C53950;
+			productRefGroup = AADE80EC1C720EC700C53950 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AADE80EA1C720EC700C53950 /* tangles_learning */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AADE80E71C720EC700C53950 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADE814E1C721F7400C53950 /* nanovg_gl2.cpp in Sources */,
+				AADE814D1C721F6E00C53950 /* nanovg.cpp in Sources */,
+				AADE814C1C721F6300C53950 /* format.cpp in Sources */,
+				AADE81051C72179F00C53950 /* polygon.cpp in Sources */,
+				AADE81021C72175A00C53950 /* polyline.cpp in Sources */,
+				AADE80EF1C720EC700C53950 /* main.cpp in Sources */,
+				AADE80FE1C7213A300C53950 /* draw.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AADE80F01C720EC700C53950 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /homebrew/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AADE80F11C720EC700C53950 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /homebrew/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AADE80F31C720EC700C53950 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/tangles_learning/external",
+					/homebrew/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/homebrew/lib,
+					"$(PROJECT_DIR)/tangles_learning/external/nanovg",
+					"$(PROJECT_DIR)/tangles_learning/external/glfw",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AADE80F41C720EC700C53950 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/tangles_learning/external",
+					/homebrew/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/homebrew/lib,
+					"$(PROJECT_DIR)/tangles_learning/external/nanovg",
+					"$(PROJECT_DIR)/tangles_learning/external/glfw",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AADE80E61C720EC700C53950 /* Build configuration list for PBXProject "tangles_learning" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADE80F01C720EC700C53950 /* Debug */,
+				AADE80F11C720EC700C53950 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AADE80F21C720EC700C53950 /* Build configuration list for PBXNativeTarget "tangles_learning" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADE80F31C720EC700C53950 /* Debug */,
+				AADE80F41C720EC700C53950 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AADE80E31C720EC700C53950 /* Project object */;
+}
