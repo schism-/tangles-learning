@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E80B5074A293F4A97EA6048C1F40D5BA9081EAEE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E80B5074A293F4A97EA6048C1F40D5BA9081EAEE" : 0,
+    "9B76F7F7455EC6A07EA1AD0D4AAF24D2E732CD1B" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B2162019-D677-497F-8B06-0BE16C5AF3E7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E80B5074A293F4A97EA6048C1F40D5BA9081EAEE" : "tangles_learning\/",
+    "9B76F7F7455EC6A07EA1AD0D4AAF24D2E732CD1B" : "..\/..\/..\/..\/homebrew"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "tangles_learning",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "tangles_learning.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Homebrew\/homebrew.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9B76F7F7455EC6A07EA1AD0D4AAF24D2E732CD1B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "bitbucket.org:csantoni\/tangles_learning.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E80B5074A293F4A97EA6048C1F40D5BA9081EAEE"
+    }
+  ]
+}

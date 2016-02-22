@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AADE80EF1C720EC700C53950 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE80EE1C720EC700C53950 /* main.cpp */; };
 		AADE80F71C72116200C53950 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE80F61C72116200C53950 /* libglfw3.a */; };
 		AADE80FE1C7213A300C53950 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE80FC1C7213A300C53950 /* draw.cpp */; };
 		AADE81021C72175A00C53950 /* polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81011C72175A00C53950 /* polyline.cpp */; };
@@ -19,6 +18,12 @@
 		AADE814C1C721F6300C53950 /* format.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81171C721F5000C53950 /* format.cpp */; };
 		AADE814D1C721F6E00C53950 /* nanovg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81451C721F5000C53950 /* nanovg.cpp */; };
 		AADE814E1C721F7400C53950 /* nanovg_gl2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81481C721F5000C53950 /* nanovg_gl2.cpp */; };
+		AAED3A981C7B5A2600833FD0 /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAED3A971C7B5A2600833FD0 /* libboost_thread-mt.dylib */; };
+		AAED3A9D1C7B5A6600833FD0 /* libCGAL_Core.11.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAED3A991C7B5A6600833FD0 /* libCGAL_Core.11.0.1.dylib */; };
+		AAED3A9E1C7B5A6600833FD0 /* libCGAL.11.0.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAED3A9A1C7B5A6600833FD0 /* libCGAL.11.0.1.dylib */; };
+		AAED3A9F1C7B5A6600833FD0 /* libgmp.10.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAED3A9B1C7B5A6600833FD0 /* libgmp.10.dylib */; };
+		AAED3AA01C7B5A6600833FD0 /* libmpfr.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAED3A9C1C7B5A6600833FD0 /* libmpfr.4.dylib */; };
+		AAED3AA21C7B5ABA00833FD0 /* test_cgal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAED3AA11C7B5ABA00833FD0 /* test_cgal.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -101,6 +106,12 @@
 		AADE81491C721F5000C53950 /* nanovg_gl_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nanovg_gl_utils.h; sourceTree = "<group>"; };
 		AADE814A1C721F5000C53950 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		AADE814B1C721F5000C53950 /* stb_truetype.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_truetype.h; sourceTree = "<group>"; };
+		AAED3A971C7B5A2600833FD0 /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../../homebrew/Cellar/boost/1.60.0_1/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
+		AAED3A991C7B5A6600833FD0 /* libCGAL_Core.11.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libCGAL_Core.11.0.1.dylib; path = ../../../../../homebrew/Cellar/cgal/4.7/lib/libCGAL_Core.11.0.1.dylib; sourceTree = "<group>"; };
+		AAED3A9A1C7B5A6600833FD0 /* libCGAL.11.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libCGAL.11.0.1.dylib; path = ../../../../../homebrew/Cellar/cgal/4.7/lib/libCGAL.11.0.1.dylib; sourceTree = "<group>"; };
+		AAED3A9B1C7B5A6600833FD0 /* libgmp.10.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgmp.10.dylib; path = ../../../../../homebrew/Cellar/gmp/6.1.0/lib/libgmp.10.dylib; sourceTree = "<group>"; };
+		AAED3A9C1C7B5A6600833FD0 /* libmpfr.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmpfr.4.dylib; path = ../../../../../homebrew/Cellar/mpfr/3.1.3/lib/libmpfr.4.dylib; sourceTree = "<group>"; };
+		AAED3AA11C7B5ABA00833FD0 /* test_cgal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_cgal.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +119,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAED3A9D1C7B5A6600833FD0 /* libCGAL_Core.11.0.1.dylib in Frameworks */,
+				AAED3A9E1C7B5A6600833FD0 /* libCGAL.11.0.1.dylib in Frameworks */,
+				AAED3A9F1C7B5A6600833FD0 /* libgmp.10.dylib in Frameworks */,
+				AAED3AA01C7B5A6600833FD0 /* libmpfr.4.dylib in Frameworks */,
+				AAED3A981C7B5A2600833FD0 /* libboost_thread-mt.dylib in Frameworks */,
 				AADE80F71C72116200C53950 /* libglfw3.a in Frameworks */,
 				AADE810D1C721C2300C53950 /* CoreVideo.framework in Frameworks */,
 				AADE81091C721BEE00C53950 /* Cocoa.framework in Frameworks */,
@@ -122,6 +138,11 @@
 		AADE80E21C720EC700C53950 = {
 			isa = PBXGroup;
 			children = (
+				AAED3A991C7B5A6600833FD0 /* libCGAL_Core.11.0.1.dylib */,
+				AAED3A9A1C7B5A6600833FD0 /* libCGAL.11.0.1.dylib */,
+				AAED3A9B1C7B5A6600833FD0 /* libgmp.10.dylib */,
+				AAED3A9C1C7B5A6600833FD0 /* libmpfr.4.dylib */,
+				AAED3A971C7B5A2600833FD0 /* libboost_thread-mt.dylib */,
 				AADE810C1C721C2300C53950 /* CoreVideo.framework */,
 				AADE810A1C721C1700C53950 /* IOKit.framework */,
 				AADE81081C721BEE00C53950 /* Cocoa.framework */,
@@ -156,6 +177,7 @@
 				AADE81011C72175A00C53950 /* polyline.cpp */,
 				AADE81031C72179F00C53950 /* polygon.cpp */,
 				AADE81041C72179F00C53950 /* polygon.h */,
+				AAED3AA11C7B5ABA00833FD0 /* test_cgal.cpp */,
 			);
 			path = tangles_learning;
 			sourceTree = "<group>";
@@ -304,12 +326,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAED3AA21C7B5ABA00833FD0 /* test_cgal.cpp in Sources */,
 				AADE814E1C721F7400C53950 /* nanovg_gl2.cpp in Sources */,
 				AADE814D1C721F6E00C53950 /* nanovg.cpp in Sources */,
 				AADE814C1C721F6300C53950 /* format.cpp in Sources */,
 				AADE81051C72179F00C53950 /* polygon.cpp in Sources */,
 				AADE81021C72175A00C53950 /* polyline.cpp in Sources */,
-				AADE80EF1C720EC700C53950 /* main.cpp in Sources */,
 				AADE80FE1C7213A300C53950 /* draw.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,6 +471,7 @@
 				AADE80F41C720EC700C53950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
