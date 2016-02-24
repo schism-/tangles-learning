@@ -26,18 +26,30 @@ struct Arrangement {
 
     vector<POI*> intersections;
 
-    CGAL_arrangement arrangement;
+    CGAL_arrangement* arrangement;
     
-    Arrangement() { arrangement = CGAL_arrangement(); }
+    Arrangement() { arrangement = new CGAL_arrangement(); };
+    
+    ~Arrangement() {};
     
     void test(){
         auto poly = polyline2r({ vec2r((real)0.0, (real)0.0), vec2r((real)1.0, (real)0.0),
                                  vec2r((real)0.0, (real)1.0), vec2r((real)1.0, (real)1.0) });
-        print_polyline(poly);
-        auto cgal_c = arrangement.to_cgal_curve(poly);
-        auto curve = arrangement.from_cgal_curve(cgal_c);
-        print_polyline(curve);
         
+        auto poly_2 = polyline2r({ vec2r((real)-2.0, (real)-2.0), vec2r((real)-2.0, (real)2.0),
+                                   vec2r((real)2.0, (real)2.0), vec2r((real)2.0, (real)-2.0),
+                                   vec2r((real)-2.0, (real)-2.0) });
+        
+        print_polyline(poly);
+        auto cgal_c = arrangement->to_cgal_curve(poly);
+        auto curve = arrangement->from_cgal_curve(cgal_c);
+        print_polyline(curve);
+        arrangement->add_curve(poly);
+        arrangement->add_curve(poly_2);
+    }
+    
+    void print_cgal_arrangement(){
+        ::print_arrangement(arrangement->arr);
     }
 };
 

@@ -14,14 +14,15 @@
 void run() {
     glfwInit();
     
-    auto window = ui_init_window({1440,900}, "tangles");
+    auto window = ui_init_window({600,600}, "tangles");
     auto callbacks = ui_init_callbacks(window);
     
     auto context = new NVGContext();
     
-    auto arr = Arrangement();
-    arr.test();
-    
+    auto arr = new Arrangement();
+    arr->test();
+    arr->print_cgal_arrangement();
+
     auto vg = nvgCreateGL2(NVG_ANTIALIAS | NVG_STENCIL_STROKES);
     nvgCreateFont(vg, "default", "resources/open-sans/OpenSans-Regular.ttf");
     

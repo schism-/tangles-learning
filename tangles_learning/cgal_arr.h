@@ -9,29 +9,19 @@
 #ifndef cgal_arr_h
 #define cgal_arr_h
 
-#include <CGAL/Arr_segment_traits_2.h>
-#include <CGAL/Arrangement_on_surface_with_history_2.h>
-#include <CGAL/Arrangement_with_history_2.h>
-#include <CGAL/Arr_simple_point_location.h>
-#include <CGAL/Arr_polyline_traits_2.h>
-
 #include "polygon.h"
 
-typedef CGAL::Exact_predicates_exact_constructions_kernel Kernel;
-typedef CGAL::Arr_segment_traits_2<Kernel>                Segment_traits_2;
-typedef CGAL::Arr_polyline_traits_2<Segment_traits_2>     Geom_traits_2;
-typedef Geom_traits_2::Point_2                            Point_2;
-typedef Geom_traits_2::Segment_2                          Segment_2;
-typedef Geom_traits_2::Curve_2                            Polyline_2;
-typedef Geom_traits_2::Subcurve_2                         Subcurve_2;
-typedef CGAL::Arrangement_with_history_2<Geom_traits_2>   Arr_with_hist_2;
-
+// Helper functions
+void print_face(const Arr_with_hist_2& arr, const Arr_with_hist_2::Face_const_handle& f);
+void print_arrangement(const Arr_with_hist_2& arr);
 
 struct CGAL_arrangement {
     Geom_traits_2 traits;
     Arr_with_hist_2 arr;
     
     CGAL_arrangement() { arr = Arr_with_hist_2(); }
+    
+    ~CGAL_arrangement() {}
     
     void add_curve(const polyline2r& curve) {
         insert(arr, to_cgal_curve(curve));
@@ -67,8 +57,7 @@ struct CGAL_arrangement {
             auto sub = from_cgal_subcurve(*sit);
             res += sub;
         }
-        return res;
+        return remove_doubles_polyline(res);
     }
 };
-
 #endif /* cgal_arr_h */

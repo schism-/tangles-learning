@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAC41AA91C7DE6A00041BE98 /* arrangement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAED3AA31C7B5CD800833FD0 /* arrangement.cpp */; };
+		AAC41AAA1C7DE6A30041BE98 /* cgal_arr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAED3AA71C7B629D00833FD0 /* cgal_arr.cpp */; };
 		AADE80F71C72116200C53950 /* libglfw3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADE80F61C72116200C53950 /* libglfw3.a */; };
 		AADE80FE1C7213A300C53950 /* draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE80FC1C7213A300C53950 /* draw.cpp */; };
 		AADE81021C72175A00C53950 /* polyline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE81011C72175A00C53950 /* polyline.cpp */; };
@@ -23,9 +25,7 @@
 		AAE817231C7C72B900564DF2 /* libCGAL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE817211C7C72B900564DF2 /* libCGAL.a */; };
 		AAE817251C7C72DB00564DF2 /* libmpfr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE817241C7C72DB00564DF2 /* libmpfr.a */; };
 		AAE817271C7C72EC00564DF2 /* libgmp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE817261C7C72EC00564DF2 /* libgmp.a */; };
-		AAED3AA51C7B5CD800833FD0 /* arrangement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAED3AA31C7B5CD800833FD0 /* arrangement.cpp */; };
 		AAED3AA61C7B5CDF00833FD0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AADE80EE1C720EC700C53950 /* main.cpp */; };
-		AAED3AA91C7B629D00833FD0 /* cgal_arr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AAED3AA71C7B629D00833FD0 /* cgal_arr.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AAC41AA81C7DE65E0041BE98 /* precompiled.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = precompiled.pch; sourceTree = "<group>"; };
 		AADE80EB1C720EC700C53950 /* tangles_learning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tangles_learning; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADE80EE1C720EC700C53950 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AADE80F61C72116200C53950 /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = tangles_learning/external/glfw/libglfw3.a; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				AADE81161C721F5000C53950 /* external */,
+				AAC41AA81C7DE65E0041BE98 /* precompiled.pch */,
 				AADE80EE1C720EC700C53950 /* main.cpp */,
 				AADE80F81C72122000C53950 /* ui.h */,
 				AADE80FF1C7214A000C53950 /* config.h */,
@@ -336,10 +338,10 @@
 			files = (
 				AADE814E1C721F7400C53950 /* nanovg_gl2.cpp in Sources */,
 				AADE814D1C721F6E00C53950 /* nanovg.cpp in Sources */,
-				AAED3AA91C7B629D00833FD0 /* cgal_arr.cpp in Sources */,
+				AAC41AAA1C7DE6A30041BE98 /* cgal_arr.cpp in Sources */,
 				AADE814C1C721F6300C53950 /* format.cpp in Sources */,
-				AAED3AA51C7B5CD800833FD0 /* arrangement.cpp in Sources */,
 				AADE81051C72179F00C53950 /* polygon.cpp in Sources */,
+				AAC41AA91C7DE6A00041BE98 /* arrangement.cpp in Sources */,
 				AADE81021C72175A00C53950 /* polyline.cpp in Sources */,
 				AAED3AA61C7B5CDF00833FD0 /* main.cpp in Sources */,
 				AADE80FE1C7213A300C53950 /* draw.cpp in Sources */,
@@ -375,6 +377,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = tangles_learning/precompiled.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -417,6 +421,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = tangles_learning/precompiled.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

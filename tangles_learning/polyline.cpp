@@ -61,7 +61,10 @@ polyline2r close_polyline(const polyline2r& curve) {
 }
 
 polyline2r remove_doubles_polyline(const polyline2r& curve){
-    
+    auto res = polyline2r();
+    for(auto i : range((int)curve.size()-1)) if (curve[i] != curve[i+1]) res.push_back(curve[i]);
+    res.push_back(curve[(int)curve.size() -1]);
+    return res;
 }
 
 real length_polyline(const polyline2r& curve) {
