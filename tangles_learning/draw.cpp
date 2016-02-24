@@ -7,8 +7,22 @@
 //
 
 #include "draw.h"
-
 #include "external/format.h"
+
+void DrawContext::draw_shape(Shape* shape, bool draw_frames, bool draw_as_points, const vec4f& stroke, const vec4f& fill) {
+    if(draw_as_points) {
+        for(auto& curve : shape->poly) for(auto&& p : curve) draw_point(p, stroke);
+    }
+    else{
+        draw_polygon(shape->poly, stroke, shape->invert ? vec4f(0.f, 0.f, 0.f, 1.f) : fill);
+    }
+    if(draw_frames) {
+        draw_line({shape->frame.o,shape->frame.o+shape->frame.x*5}, {1,0,0,0.5f});
+        draw_line({shape->frame.o,shape->frame.o+shape->frame.y*5}, {0,0,1,0.5f});
+        for (auto && vl : shape->aux_lines)
+            draw_line(vl, {0,1,1,0.5f});
+    }
+}
 
 void DrawContext::draw_labels(const vector<string>& labels) {
     auto offset = vec2r{8,18};

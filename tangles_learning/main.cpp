@@ -19,9 +19,9 @@ void run() {
     
     auto context = new NVGContext();
     
-    auto arr = new Arrangement();
-    arr->test();
-    arr->print_cgal_arrangement();
+    auto tangle = new Tangle();
+    tangle->test();
+    tangle->print_cgal_arrangement();
 
     auto vg = nvgCreateGL2(NVG_ANTIALIAS | NVG_STENCIL_STROKES);
     nvgCreateFont(vg, "default", "resources/open-sans/OpenSans-Regular.ttf");
@@ -35,7 +35,7 @@ void run() {
     
     auto offset = [&] {
         auto wh = ui_window_size(window);
-//        return vec2r(wh.x,wh.y)/2 - 0.5 * center(rscale(tangle->bounds(), scale_factor().x));
+        return vec2r(wh.x,wh.y)/2 - 0.5 * center(rscale(tangle->bounds(), scale_factor().x));
         return vec2r((real)0.0, (real)0.0);
     };
     
@@ -64,7 +64,13 @@ void run() {
         auto wh = ui_window_size(window);
         
         context->begin_frame(wh, offset(), scale_factor());
+        
+        for(auto shape : tangle->shapes)
+            context->draw_shape(shape, draw_frames, draw_as_points, {0,0,0,1}, {0,0,0,0});
+        
         context->draw_line(mouse_stroke, {0,0,1,1});
+        
+        
         context->end_frame(-offset(), scale_factor());
         
         if(ui_mouse_button(window, ui_mouse_left)) {

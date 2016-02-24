@@ -11,10 +11,6 @@
 
 #include "polygon.h"
 
-// Helper functions
-void print_face(const Arr_with_hist_2& arr, const Arr_with_hist_2::Face_const_handle& f);
-void print_arrangement(const Arr_with_hist_2& arr);
-
 struct CGAL_arrangement {
     Geom_traits_2 traits;
     Arr_with_hist_2 arr;
@@ -60,4 +56,10 @@ struct CGAL_arrangement {
         return remove_doubles_polyline(res);
     }
 };
+
+// Helper functions
+void print_face(const Arr_with_hist_2& arr, const Arr_with_hist_2::Face_const_handle& f);
+void print_arrangement(const Arr_with_hist_2& arr);
+vector<polygon2r> get_shapes(CGAL_arrangement* cgal_arr);
+
 #endif /* cgal_arr_h */
