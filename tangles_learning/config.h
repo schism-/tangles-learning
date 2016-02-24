@@ -9,9 +9,7 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
-#include "common.h"
 #include "vmath.h"
-#include "image.h"
 
 #if 0
 

@@ -9,7 +9,6 @@
 #ifndef arrangement_h
 #define arrangement_h
 
-#include "config.h"
 #include "cgal_arr.h"
 
 struct Shape {
@@ -28,6 +27,18 @@ struct Arrangement {
     vector<POI*> intersections;
 
     CGAL_arrangement arrangement;
+    
+    Arrangement() { arrangement = CGAL_arrangement(); }
+    
+    void test(){
+        auto poly = polyline2r({ vec2r((real)0.0, (real)0.0), vec2r((real)1.0, (real)0.0),
+                                 vec2r((real)0.0, (real)1.0), vec2r((real)1.0, (real)1.0) });
+        print_polyline(poly);
+        auto cgal_c = arrangement.to_cgal_curve(poly);
+        auto curve = arrangement.from_cgal_curve(cgal_c);
+        print_polyline(curve);
+        
+    }
 };
 
 #endif /* arrangement_h */

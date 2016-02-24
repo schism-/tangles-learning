@@ -9,7 +9,7 @@
 #ifndef _UI_H_
 #define _UI_H_
 
-#include "config.h"
+#include "image.h"
 #include "external/glfw/glfw3.h"
 
 // #define UI_WIDGETS

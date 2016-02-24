@@ -9,8 +9,7 @@
 #ifndef _IMAGE_H_
 #define _IMAGE_H_
 
-#include "common.h"
-#include "vmath.h"
+#include "config.h"
 
 // a generic image
 template<typename T>

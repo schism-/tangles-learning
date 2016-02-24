@@ -7,8 +7,9 @@
 //
 
 #include <string>
-#include "ui.h"
+
 #include "draw.h"
+#include "arrangement.h"
 
 void run() {
     glfwInit();
@@ -17,6 +18,9 @@ void run() {
     auto callbacks = ui_init_callbacks(window);
     
     auto context = new NVGContext();
+    
+    auto arr = Arrangement();
+    arr.test();
     
     auto vg = nvgCreateGL2(NVG_ANTIALIAS | NVG_STENCIL_STROKES);
     nvgCreateFont(vg, "default", "resources/open-sans/OpenSans-Regular.ttf");
@@ -43,9 +47,7 @@ void run() {
     
     callbacks->text = [&](ui_window* window, int key) {
         switch (key) {
-                // case '\\': if(selected->parent) selected = selected->parent; break;
             case 'v': draw_colors = not draw_colors; break;
-                
             case 'f': draw_frames = not draw_frames; break;
             case 'p': draw_as_points = not draw_as_points; break;
             case 'd': draw_debug = not draw_debug; break;
