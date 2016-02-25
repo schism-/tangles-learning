@@ -11,6 +11,8 @@
 
 #include "cgal_arr.h"
 
+vector<polygon2r> get_shapes(CGAL_arrangement* cgal_arr);
+
 struct Shape {
     polygon2r poly;
     frame2r frame;
@@ -55,18 +57,12 @@ struct Tangle {
     }
     
     void test(){
-        auto poly = polyline2r({ vec2r((real)0.0, (real)0.0), vec2r((real)100.0, (real)0.0),
-                                 vec2r((real)0.0, (real)100.0), vec2r((real)100.0, (real)100.0) });
-        
-        auto poly_2 = polyline2r({ vec2r((real)-200.0, (real)-200.0), vec2r((real)-200.0, (real)200.0),
-                                   vec2r((real)200.0, (real)200.0), vec2r((real)200.0, (real)-200.0),
-                                   vec2r((real)-200.0, (real)-200.0) });
-        print_polyline(poly);
-        auto cgal_c = arrangement->to_cgal_curve(poly);
-        auto curve = arrangement->from_cgal_curve(cgal_c);
-        print_polyline(curve);
-        arrangement->add_curve(poly);
-        arrangement->add_curve(poly_2);
+        arrangement->add_curve(make_polyline_rect({-100.0, -100.0}, {100.0, 100.0}, (real)2.0));
+        arrangement->add_curve(make_polyline_rect({-200.0, -200.0}, {0.0, 0.0}, (real)10.0));
+        arrangement->add_curve(make_polyline_circle(vec2r((real)0.0, (real)0.0), (real)50.0, (real)2.0));
+        arrangement->add_curve(make_polyline_segment({-400.0, -400.0}, {150.0, 150.0}, (real)1.0));
+        arrangement->add_curve(make_polyline_segment({400.0, -400.0}, {0.0, 0.0}, (real)1.0));
+        arrangement->add_curve(make_polyline_segment({0.0, 200.0}, {-100.0, -300.0}, (real)1.0));
         update_tangle();
     }
     

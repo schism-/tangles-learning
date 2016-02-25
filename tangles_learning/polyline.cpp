@@ -113,8 +113,7 @@ polyline2r make_polyline_rect(const vec2r& a, const vec2r& b, real dist) {
     make_polyline_segment(points[0],points[1],dist,true) +
     make_polyline_segment(points[1],points[2],dist,true) +
     make_polyline_segment(points[2],points[3],dist,true) +
-    make_polyline_segment(points[3],points[4],dist,true) +
-    points[4];
+    make_polyline_segment(points[3],points[4],dist,false);
 }
 
 polyline2r make_polyline_circle(const vec2r& c, real radius, real dist) {
