@@ -34,9 +34,10 @@ struct CGAL_arrangement {
     
     void add_curve(const polyline2r& curve) {
         auto cgal_curve = to_cgal_curve(curve);
-        auto obj = traits.construct_curve_2_object();
+        Geom_traits_2::Construct_curve_2 obj = traits.construct_curve_2_object();
         Polyline_2 pi2 = obj(cgal_curve.begin(), cgal_curve.end());
-        CGAL::insert(arr, pi2.begin_subcurves(), pi2.end_subcurves());
+        insert(arr, pi2);
+        std::cout << "Added curve" << std::endl;
     }
     
     void add_curves(const vector<polyline2r>& curves) {

@@ -46,4 +46,14 @@ polyline2r make_polyline_rect(const vec2r& a, const vec2r& b, real dist);
 polyline2r make_polyline_circle(const vec2r& c, real radius, real dist);
 
 void print_polyline(const polyline2r& curve);
+
+inline polyline2r remove_duplicates_polyline(const polyline2r& curve);
+polyline2r smooth_polyline(const polyline2r& curve, int iterations);
+bool intersect_segments(const vec2r& p0, const vec2r& p1, const vec2r& p2, const vec2r& p3, vec2r *st, vec2r* p);
+vector<pair<vec2i,vec2r>> intersections_polyline(const polyline2r& curvea, const polyline2r& curveb);
+vector<pair<int,vec2r>> intersections_polyline(const polyline2r& curve);
+polyline2r subdivide_polyline(const polyline2r& curve, real dist);
+vector<polyline2r> split_polyline(const polyline2r& curve, const vector<pair<int,vec2r>>& intersections);
+polyline2r cleanup_stroke(const polyline2r& stroke, bool closed);
+
 #endif

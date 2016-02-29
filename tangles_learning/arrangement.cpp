@@ -19,18 +19,29 @@ vector<polygon2r> get_shapes(CGAL_arrangement* cgal_arr){
         if (!fit->is_unbounded()){
             auto cc = fit->outer_ccb();
             do {
-                pts.push_back(from_cgal_point(cc->source()->point()));
+                std::cout << cc->direction() << std::endl;
+                std::cout << cc->source()->point() << std::endl;
+                std::cout << cc->curve() << std::endl;
+                std::cout << cc->target()->point() << std::endl;
+                std::cout << std::endl;
+                if (cc->source()->point() != cc->curve().begin_subcurves()->source()){
+                    pts += reverse_polyline(from_cgal_curve(cc->curve()));
+                }
+                else {
+                    pts += from_cgal_curve(cc->curve());
+                }
             } while (++cc != fit->outer_ccb());
             res_poly.push_back(pts);
-            for (auto hi = fit->holes_begin(); hi != fit->holes_end(); ++hi) {
-                holes.push_back(polyline2r());
-                auto curr = *hi;
-                do {
-                    holes.back().push_back(from_cgal_point(curr->source()->point()));
-                } while (++curr != *hi);
-            }
-            res_poly += holes;
-            
+            std::cout << std::endl;
+            std::cout << std::endl;
+//            for (auto hi = fit->holes_begin(); hi != fit->holes_end(); ++hi) {
+//                holes.push_back(polyline2r());
+//                auto curr = *hi;
+//                do {
+//                    holes.back().push_back(from_cgal_point(curr->source()->point()));
+//                } while (++curr != *hi);
+//            }
+//            res_poly += holes;
             res.push_back(res_poly);
         }
     }

@@ -60,10 +60,12 @@ void print_arrangement(const Arr_with_hist_2& arr, bool verbose){
     Arr_with_hist_2::Face_const_iterator fit;
     std::cout << arr.number_of_faces() << " faces:" << std::endl;
     if(verbose) for(fit=arr.faces_begin(); fit!=arr.faces_end(); ++fit) print_face(arr, fit);
+    
+    std::cout << arr.number_of_curves() << " curves:" << std::endl;
 }
 
 Point_2 to_cgal_point(const vec2r& point){
-    return Point_2((real)point.x, (real)point.y);
+    return Point_2((real)point.x, -(real)point.y);
 }
 
 vector<Segment_2> to_cgal_arr_segments(const polyline2r& curve) {
@@ -84,7 +86,7 @@ vector<Segment_2> to_cgal_curve(const polyline2r& polyline){
 }
 
 vec2r from_cgal_point(const Point_2& point){
-    return vec2r((real)(CGAL::to_double(point.x())), (real)(CGAL::to_double(point.y())));
+    return vec2r((real)(CGAL::to_double(point.x())), -(real)(CGAL::to_double(point.y())));
 }
 
 polyline2r from_cgal_subcurve(const Subcurve_2& sub){

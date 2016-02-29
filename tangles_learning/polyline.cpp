@@ -139,3 +139,132 @@ bool inside_polylines(const vector<polyline2r>& curves, const vec2r& p) {
     }
     return flips;
 }
+
+inline polyline2r remove_duplicates_polyline(const polyline2r& curve) {
+    if(curve.empty()) return curve;
+    auto cleaned = polyline2r({curve.front()});
+    for(auto&& p : curve) if(p != cleaned.back()) cleaned += p;
+    return cleaned;
+}
+
+polyline2r smooth_polyline(const polyline2r& curve, int iterations) {
+    if(iterations == 0 or curve.empty()) return curve;
+    auto relaxed = polyline2r(curve.size(),zero2r);
+    for(auto i : range(1,(int)curve.size()-1)) {
+        relaxed[i] = curve[i-1]*0.25f + curve[i]*0.5f + curve[i+1]*0.25f;
+    }
+    if(closed_polyline(curve)) {
+        relaxed[0] = curve[curve.size()-2]*0.25f + curve[0]*0.5f + curve[1]*0.25f;
+        relaxed.back() = relaxed.front();
+    } else {
+        relaxed[0] = curve[0]*0.75f + curve[1]*0.25f;
+        relaxed[relaxed.size()-1] = curve[relaxed.size()-1]*0.75f + curve[relaxed.size()-2]*0.25f;
+    }
+    return smooth_polyline(relaxed, iterations-1);
+}
+
+bool intersect_segments(const vec2r& p0, const vec2r& p1, const vec2r& p2, const vec2r& p3,
+                              vec2r *st, vec2r* p) {
+    auto s1 = p1 - p0;
+    auto s2 = p3 - p2;
+    
+    auto den = -s2.x * s1.y + s1.x * s2.y;
+    if(den == 0) return false;
+    
+    auto s = ( s2.x * (p0.y - p2.y) - s2.y * (p0.x - p2.x)) / den;
+    auto t = (-s1.y * (p0.x - p2.x) + s1.x * (p0.y - p2.y)) / den;
+    
+    if (s < 0 || s > 1 || t < 0 || t > 1) return false;
+    
+    if(st) *st = vec2r{s,t};
+    if(p) *p = p0*(1-s)+p1*s;
+    return true;
+}
+
+vector<pair<vec2i,vec2r>> intersections_polyline(const polyline2r& curvea, const polyline2r& curveb) {
+    auto ret = vector<pair<vec2i,vec2r>>();
+    for(auto i : range((int)curvea.size()-1)) {
+        for(auto j : range((int)curveb.size()-1)) {
+            auto p = zero2r;
+            if(intersect_segments(curvea[i],curvea[i+1],curveb[j],curveb[j+1],nullptr,&p)) ret += {{i,j},p};
+        }
+    }
+    return ret;
+}
+
+vector<pair<int,vec2r>> intersections_polyline(const polyline2r& curve) {
+    auto cc = closed_polyline(curve);
+    auto ret = vector<pair<int,vec2r>>();
+    for(auto i : range((int)curve.size()-2)) {
+        for(auto j : range(i+2,(int)curve.size()-1)) {
+            if(cc and i == 0 and j == curve.size()-2) continue;
+            auto p = zero2r;
+            if(intersect_segments(curve[i],curve[i+1],curve[j],curve[j+1],nullptr,&p)) {
+                ret += {i,p};
+                ret += {j,p};
+            }
+        }
+    }
+    return ret;
+}
+
+polyline2r subdivide_polyline(const polyline2r& curve, real dist) {
+    auto subdivided = polyline2r();
+    subdivided += curve[0];
+    for(auto i : range((int)curve.size()-1)) {
+        auto l = length(curve[i]-curve[i+1]);
+        auto steps = (int)round(l/dist);
+        if(steps >= 2) {
+            for(auto j = 1; j < steps; j ++) {
+                auto t = j / (real)steps;
+                subdivided += curve[i]*(1-t) + curve[i+1]*t;
+            }
+        }
+        subdivided += curve[i+1];
+    }
+    return subdivided;
+}
+
+vector<polyline2r> split_polyline(const polyline2r& curve, const vector<pair<int,vec2r>>& intersections) {
+    auto curves = vector<polyline2r>();
+    curves += {curve[0]};
+    for(auto i : range((int)curve.size()-1)) {
+        for(auto&& intersection : intersections) {
+            if(i == intersection.first) {
+                // auto p = curve[i]*(1-intersection.second.x)+curve[i+1]*intersection.second.x;
+                curves.back() += intersection.second;
+                curves += {intersection.second};
+            }
+        }
+        curves.back() += curve[i+1];
+    }
+    return curves;
+}
+
+polyline2r cleanup_stroke(const polyline2r& stroke, bool closed) {
+    if(stroke.size() <= 1) return stroke;
+    // remove duplicates
+    auto cleaned = remove_duplicates_polyline(stroke);
+    // close
+    if(closed) cleaned = close_polyline(cleaned);
+//    // simplify line
+//    cleaned = simplify_polyline(cleaned, POLY_RES);
+    // resample
+    cleaned = subdivide_polyline(cleaned, POLY_RES);
+    // smooth
+    cleaned = smooth_polyline(cleaned, 10);
+    // remove self intersections
+    auto inters = intersections_polyline(cleaned);
+    if(not inters.empty()) {
+        auto splitted = split_polyline(cleaned, inters);
+        auto max_l = length_polyline(splitted[0]); auto max_split = &splitted[0];
+        for(auto&& split : splitted) {
+            auto l = length_polyline(split);
+            if(l > max_l) { max_split = &split; max_l = l; }
+        }
+        *max_split = close_polyline(*max_split);
+        cleaned = *max_split;
+        if(closed) cleaned = close_polyline(cleaned);
+    }
+    return cleaned;
+}

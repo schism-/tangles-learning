@@ -60,17 +60,12 @@ void run() {
     
     while(not ui_done(window)) {
         ui_set_title(window, "tangles | "+ mouse_mode +" | ");
-        
         auto wh = ui_window_size(window);
         
         context->begin_frame(wh, offset(), scale_factor());
-        
         for(auto shape : tangle->shapes)
             context->draw_shape(shape, draw_frames, draw_as_points, {0,0,0,1}, {0,0,0,0});
-        
         context->draw_line(mouse_stroke, {0,0,1,1});
-        
-        
         context->end_frame(-offset(), scale_factor());
         
         if(ui_mouse_button(window, ui_mouse_left)) {
@@ -78,6 +73,16 @@ void run() {
 //                selected = tangle->select_added(mouse_pos());
             } else if(mouse_mode == "mouse_outline" or mouse_mode == "mouse_stroke") {
                 mouse_stroke += mouse_pos();
+            } else {
+            
+            }
+        } else {
+            if(mouse_mode == "mouse_outline" or mouse_mode == "mouse_stroke") {
+                if(not mouse_stroke.empty() or ((int)mouse_stroke.size() > 2)) {
+                    mouse_stroke = cleanup_stroke(mouse_stroke, mouse_mode == "mouse_outline");
+                    tangle->add_curve(mouse_stroke);
+                    mouse_stroke.clear();
+                }
             } else { }
         }
         

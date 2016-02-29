@@ -56,18 +56,21 @@ struct Tangle {
         }
     }
     
+    void add_curve(const polyline2r curve){
+        arrangement->add_curve(curve);
+        update_tangle();
+    }
+    
     void test(){
-        arrangement->add_curve(make_polyline_rect({-100.0, -100.0}, {100.0, 100.0}, (real)2.0));
-        arrangement->add_curve(make_polyline_rect({-200.0, -200.0}, {0.0, 0.0}, (real)10.0));
-        arrangement->add_curve(make_polyline_circle(vec2r((real)0.0, (real)0.0), (real)50.0, (real)2.0));
-        arrangement->add_curve(make_polyline_segment({-400.0, -400.0}, {150.0, 150.0}, (real)1.0));
-        arrangement->add_curve(make_polyline_segment({400.0, -400.0}, {0.0, 0.0}, (real)1.0));
-        arrangement->add_curve(make_polyline_segment({0.0, 200.0}, {-100.0, -300.0}, (real)1.0));
+        arrangement->add_curve(make_polyline_circle(vec2r((real)0.0, (real)0.0), (real)100.0, (real)2.0));
+        arrangement->add_curve(make_polyline_circle(vec2r((real)50.0, (real)0.0), (real)100.0, (real)2.0));
+//        arrangement->add_curve(make_polyline_circle(vec2r((real)-50.0, (real)0.0), (real)100.0, (real)2.0));
+        
         update_tangle();
     }
     
     void print_cgal_arrangement(){
-        print_arrangement(arrangement->arr);
+        print_arrangement(arrangement->arr, true);
     }
 };
 
