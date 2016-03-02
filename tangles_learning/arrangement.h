@@ -72,6 +72,16 @@ struct Tangle {
     void print_cgal_arrangement(){
         print_arrangement(arrangement->arr, true);
     }
+    
+    Shape* select_shape(const vec2r& mouse_pos){
+        auto picked = (Shape*)nullptr;
+        for(auto&& shape : shapes) {
+            if(inside_polygon(shape->poly, mouse_pos)) picked = shape;
+            if(picked) break;
+        }
+        if(not picked) return nullptr;
+        return picked;
+    }
 };
 
 #endif /* arrangement_h */

@@ -23,6 +23,8 @@ void run() {
     tangle->test();
     tangle->print_cgal_arrangement();
 
+    auto selected = (Shape *) nullptr;
+    
     auto vg = nvgCreateGL2(NVG_ANTIALIAS | NVG_STENCIL_STROKES);
     nvgCreateFont(vg, "default", "resources/open-sans/OpenSans-Regular.ttf");
     
@@ -66,11 +68,16 @@ void run() {
         for(auto shape : tangle->shapes)
             context->draw_shape(shape, draw_frames, draw_as_points, {0,0,0,1}, {0,0,0,0});
         context->draw_line(mouse_stroke, {0,0,1,1});
+        
+        if(selected) {
+            context->draw_shape(selected, draw_frames, draw_as_points, {0,0.8,0,1}, {0,1,0,1});
+        }
+        
         context->end_frame(-offset(), scale_factor());
         
         if(ui_mouse_button(window, ui_mouse_left)) {
             if(mouse_mode == "mouse_select") {
-//                selected = tangle->select_added(mouse_pos());
+                selected = tangle->select_shape(mouse_pos());
             } else if(mouse_mode == "mouse_outline" or mouse_mode == "mouse_stroke") {
                 mouse_stroke += mouse_pos();
             } else {
