@@ -49,6 +49,7 @@ void print_arrangement(const Arr_with_hist_2& arr, bool verbose){
             else std::cout << " − degree " << vit->degree()<< std::endl;
         }
     }
+    std::cout << std::endl;
     
     Arr_with_hist_2::Edge_const_iterator eit;
     std::cout<<arr.number_of_edges() << " edges:" << std::endl;
@@ -56,12 +57,15 @@ void print_arrangement(const Arr_with_hist_2& arr, bool verbose){
         for(eit=arr.edges_begin(); eit!=arr.edges_end(); ++eit)
             std::cout << "(" << eit->source()->point() << " -> " << eit->target()->point() << ")" << std::endl;
     }
+    std::cout << std::endl;
     
     Arr_with_hist_2::Face_const_iterator fit;
     std::cout << arr.number_of_faces() << " faces:" << std::endl;
     if(verbose) for(fit=arr.faces_begin(); fit!=arr.faces_end(); ++fit) print_face(arr, fit);
+    std::cout << std::endl;
     
     std::cout << arr.number_of_curves() << " curves:" << std::endl;
+    std::cout << std::endl;
 }
 
 Point_2 to_cgal_point(const vec2r& point){

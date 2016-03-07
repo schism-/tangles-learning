@@ -28,13 +28,17 @@ using POI = vec2r;
 
 struct Tangle {
     vector<Shape*> shapes;
+
+    vector<pair<polyline2r, Curve_handle_2>> curves;
     vector<POI*> intersections;
+    
     CGAL_arrangement* arrangement;
     
     Tangle() {
         arrangement = new CGAL_arrangement();
         shapes = vector<Shape*>();
         intersections = vector<POI*>();
+        curves = vector<pair<polyline2r, Curve_handle_2>>();
     };
     
     ~Tangle() {};
@@ -56,17 +60,16 @@ struct Tangle {
         }
     }
     
-    void add_curve(const polyline2r curve){
-        arrangement->add_curve(curve);
+    void add_curve(const polyline2r& curve){
+        auto c_h = arrangement->add_curve(curve);
+        curves.push_back(make_pair(curve, c_h));
         update_tangle();
     }
     
     void test(){
-        arrangement->add_curve(make_polyline_circle(vec2r((real)0.0, (real)0.0), (real)100.0, (real)2.0));
-        arrangement->add_curve(make_polyline_circle(vec2r((real)50.0, (real)0.0), (real)100.0, (real)2.0));
-//        arrangement->add_curve(make_polyline_circle(vec2r((real)-50.0, (real)0.0), (real)100.0, (real)2.0));
-        
-        update_tangle();
+        add_curve(make_polyline_circle(vec2r((real)0.0, (real)0.0), (real)100.0, (real)2.0));
+        add_curve(make_polyline_circle(vec2r((real)50.0, (real)0.0), (real)100.0, (real)2.0));
+        add_curve(make_polyline_circle(vec2r((real)-50.0, (real)0.0), (real)100.0, (real)2.0));
     }
     
     void print_cgal_arrangement(){
