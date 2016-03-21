@@ -34,4 +34,6 @@ bool inside_polygon(const polygon2r& poly, const vec2r& p);
 
 bool inside_polygons(const vector<polygon2r>& polys, const vec2r& p);
 
+vector<polygon2r> parse_svg_polygons(const string& svg, real resolution);
+
 #endif /* polygon_h */

@@ -32,14 +32,21 @@ struct CGAL_arrangement {
     }
     ~CGAL_arrangement() {}
     
-    Curve_handle_2 add_curve(const polyline2r& curve) {
+    pair<Curve_handle_2, vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>>> add_curve(const polyline2r& curve) {
         auto cgal_curve = to_cgal_curve(curve);
         Geom_traits_2::Construct_curve_2 obj = traits.construct_curve_2_object();
         Polyline_2 pi2 = obj(cgal_curve.begin(), cgal_curve.end());
-//        segment_intersect(arr, cgal_curve.back());
-        polyline_intersect(arr, curve);
+        
+        auto cgal_intersections = polyline_intersect(arr, curve);
+        auto handle = insert(arr, pi2);
         std::cout << "Added curve" << std::endl;
-        return insert(arr, pi2);
+        std::cout << "- Intersections (" << cgal_intersections.size() << ")"<< std::endl;
+        auto intersections = vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>>();
+        for (auto i : cgal_intersections)
+            intersections.push_back(make_pair(from_cgal_point(i.first), i.second));
+        for (auto i : intersections) std::cout << i.first.x << " " << i.first.y << std::endl;
+        
+        return make_pair(handle, intersections);
     }
     
     void add_curves(const vector<polyline2r>& curves) {
@@ -59,7 +66,7 @@ struct CGAL_arrangement {
         }
     }
     
-    void polyline_intersect(Arr_with_hist_2 &arr, const polyline2r& curve){
+    vector<pair<Point_2, vector<Arr_with_hist_2::Curve_handle>>> polyline_intersect(Arr_with_hist_2 &arr, const polyline2r& curve){
         std::vector<CGAL::Object> zone_elems;
         Arr_with_hist_2::Halfedge_handle face;
         Arr_with_hist_2::Vertex_handle vertex;
@@ -74,6 +81,8 @@ struct CGAL_arrangement {
         
         auto intersections = std::set<Point_2>();
         
+        auto int_2 = vector<pair<Point_2, vector<Arr_with_hist_2::Curve_handle>>>();
+        
         for (auto m_c : mono_curves){
             Geom_traits_2::X_monotone_curve_2 curr;
             bool check = CGAL::assign(curr, m_c);
@@ -82,22 +91,26 @@ struct CGAL_arrangement {
             for ( int i = 0; i < (int)zone_elems.size(); ++i ){
                 bool check_half = CGAL::assign(face, zone_elems[i]);
                 if (check_half){
-                    std::cout << "\t half " << face->source()->point() << " -> " << face->target()->point() << std::endl;
                     auto temp = vector<Polyline_2>();
                     temp.push_back(c2);
                     temp.push_back(face->curve());
                     std::list<Point_2> pts;
                     CGAL::compute_intersection_points(temp.begin(), temp.end(), std::back_inserter(pts), false, traits);
-                    for (auto pt : pts) intersections.insert(pt);
+                    if (!pts.empty()){
+                        for (auto pt : pts){
+                            intersections.insert(pt);
+                            auto orig_curves = vector<Arr_with_hist_2::Curve_handle>();
+                            for (auto ocit = arr.originating_curves_begin(face); ocit != arr.originating_curves_end(face); ++ocit)
+                                orig_curves.push_back(ocit);
+                            int_2.push_back(make_pair(pt, orig_curves));
+                        }
+                    }
                 }
-                
                 bool check_vert = CGAL::assign(vertex, zone_elems[i]);
                 if (check_vert) intersections.insert(vertex->point());
             }
         }
-        
-        for (auto i : intersections)
-            std::cout << "vert " << i << std::endl;
+        return int_2;
     }
     
     void polyline_intersect_2(Arr_with_hist_2 &arr, const polyline2r& curve){

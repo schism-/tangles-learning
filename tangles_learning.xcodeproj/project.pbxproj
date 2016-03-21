@@ -41,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA509CE61C9C23B200C5EE28 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = "../../../../../Downloads/json-master/src/json.hpp"; sourceTree = "<group>"; };
 		AAC41AA81C7DE65E0041BE98 /* precompiled.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = precompiled.pch; sourceTree = "<group>"; };
 		AADE80EB1C720EC700C53950 /* tangles_learning */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = tangles_learning; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADE80EE1C720EC700C53950 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		AADE81161C721F5000C53950 /* external */ = {
 			isa = PBXGroup;
 			children = (
+				AA509CE61C9C23B200C5EE28 /* json.hpp */,
 				AADE81171C721F5000C53950 /* format.cpp */,
 				AADE81181C721F5000C53950 /* format.h */,
 				AADE81191C721F5000C53950 /* glfw */,

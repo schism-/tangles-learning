@@ -14,14 +14,13 @@
 void run() {
     glfwInit();
     
-    auto window = ui_init_window({600,600}, "tangles");
+    auto window = ui_init_window({800,800}, "tangles");
     auto callbacks = ui_init_callbacks(window);
     
     auto context = new NVGContext();
     
     auto tangle = new Tangle();
-    tangle->test();
-    tangle->print_cgal_arrangement();
+    tangle->load_instructions("test_scene.json");
 
     auto selected = (Shape *) nullptr;
     
@@ -36,9 +35,8 @@ void run() {
     };
     
     auto offset = [&] {
-        auto wh = ui_window_size(window);
-        return vec2r(wh.x,wh.y)/2 - 0.5 * center(rscale(tangle->bounds(), scale_factor().x));
-        return vec2r((real)0.0, (real)0.0);
+        auto wh = ui_window_size(window); auto bounds = tangle->bounds();
+        return vec2r(wh.x,wh.y)/2 - center(bounds);
     };
     
     auto window_to_tangle = [&](const vec2r& p) { return ((real)1.0 / scale_factor().x) * (p - offset()); };

@@ -45,3 +45,30 @@ bool inside_polygons(const vector<polygon2r>& polys, const vec2r& p) {
     for(auto&& poly : polys) if(inside_polylines(poly, p)) return true;
     return false;
 }
+
+// svg
+
+vector<polygon2r> parse_svg_polygons(const string& svg, real resolution) {
+    auto curves = parse_svg_polylines(svg, resolution);
+    for(auto& curve : curves) curve = close_polyline(curve);
+    auto inside = vector<vector<bool>>(curves.size());
+    for(auto i : range(curves)) {
+        inside[i] = vector<bool>(curves.size(),false);
+        for(auto j : range(curves)) {
+            if(i == j) continue;
+            auto ins = true;
+            //            for(auto&& p : curves[i]) if(inside_polyline(curves[j], p)) { inside[i][j] = true; break; }
+            for(auto&& p : curves[i]) ins = ins and inside_polyline(curves[j], p);
+            if (ins) inside[i][j] = true;
+        }
+    }
+    auto polys = vector<polygon2r>();
+    for(auto i : range(curves)) {
+        auto inner = false;
+        for(auto j : range(curves)) inner = inner or inside[i][j];
+        if(inner) continue;
+        polys += {curves[i]};
+        for(auto j : range(curves)) if(inside[j][i]) polys.back() += curves[j];
+    }
+    return polys;
+}

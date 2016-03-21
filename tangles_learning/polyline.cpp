@@ -268,3 +268,45 @@ polyline2r cleanup_stroke(const polyline2r& stroke, bool closed) {
     }
     return cleaned;
 }
+
+#define NANOSVG_ALL_COLOR_KEYWORDS	// Include full list of color keywords.
+#define NANOSVG_IMPLEMENTATION	// Expands implementation
+#include "external/nanosvg/nanosvg.h"
+
+polyline2r sample_bezier_polyline(const vector<vec2r>& cp, int steps) {
+    if (steps == 0) return polyline2r();
+    auto curve = polyline2r(steps+1);
+    curve[0] = cp[0];
+    for(auto i : range(1,steps)) {
+        auto t = i / (real)steps;
+        auto it = 1-t;
+        curve[i] = it*it*it*cp[0] + 3*it*it*t*cp[1] + 3*it*t*t*cp[2] + t*t*t*cp[3];
+    }
+    curve[steps] = cp[3];
+    return curve;
+}
+
+vector<polyline2r> parse_svg_polylines(const string& svg, real resolution) {
+    auto buffer = new char[svg.size()+1]; strcpy(buffer, svg.c_str());
+    auto image = nsvgParse(buffer, "px", 96);
+    delete [] buffer;
+    auto curves = vector<polyline2r>();
+    for (auto shape = image->shapes; shape != nullptr; shape = shape->next) {
+        for (auto path = shape->paths; path != nullptr; path = path->next) {
+            curves += polyline2r();
+            auto cp = vector<vec2r>();
+            for(auto i : range(path->npts)) cp += vec2r(path->pts[i*2],path->pts[i*2+1]);
+            for (auto i = 0; i < cp.size()-1; i += 3) {
+                if(cp[i+0] == cp[i+1] and cp[i+1] == cp[i+2] and cp[i+2] == cp[i+3]) continue;
+                auto len = length_polyline(sample_bezier_polyline({cp[i+0],cp[i+1],cp[i+2],cp[i+3]}, 100));
+                curves.back() += sample_bezier_polyline({cp[i+0],cp[i+1],cp[i+2],cp[i+3]}, (int)round(len / resolution));
+            }
+            curves.back() = remove_duplicates_polyline(curves.back());
+            if(path->closed) curves.back() = close_polyline(curves.back());
+        }
+    }
+    nsvgDelete(image);
+    auto final_curves = vector<polyline2r>();
+    for (auto c : curves) { if (not c.empty()) final_curves.push_back(c); }
+    return final_curves;
+}

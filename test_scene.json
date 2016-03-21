@@ -1,0 +1,26 @@
+{
+	"steps" : {
+		"step_0" : {
+			"curves" : [
+				{
+					"type" : "polyline",
+					"data" : [
+						[1.0, 2.0], [2.0, 2.0], [3.0, 2.0], [4.0, 2.0], [5.0, 2.0]
+					]
+				}
+			]
+
+		},
+		"step_1" : {
+			"curves" : [
+				{
+					"type" : "bezier",
+					"data" : "derpherpbezierstuff"
+				}
+			]
+
+		}
+	},
+
+	"canvas" : "svg/square_base.svg"
+}

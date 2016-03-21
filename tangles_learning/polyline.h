@@ -56,4 +56,5 @@ polyline2r subdivide_polyline(const polyline2r& curve, real dist);
 vector<polyline2r> split_polyline(const polyline2r& curve, const vector<pair<int,vec2r>>& intersections);
 polyline2r cleanup_stroke(const polyline2r& stroke, bool closed);
 
+vector<polyline2r> parse_svg_polylines(const string& svg, real resolution);
 #endif
