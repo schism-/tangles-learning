@@ -95,11 +95,17 @@ struct Tangle {
         std::cout << shapes.size() << " shapes in arrangement" << std::endl;
     }
     
+    void analyze_curve(Curve* curve){
+        
+    }
+    
     void add_curve(const polyline2r& curve){
         auto c_h = arrangement->add_curve(curve);
         auto c_obj = new Curve(curve, c_h.first, c_h.second);
         curves.push_back(c_obj);
         update_tangle();
+        
+        analyze_curve(c_obj);
     }
     
     void test(){

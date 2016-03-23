@@ -41,9 +41,11 @@ struct CGAL_arrangement {
         auto handle = insert(arr, pi2);
         std::cout << "Added curve" << std::endl;
         std::cout << "- Intersections (" << cgal_intersections.size() << ")"<< std::endl;
+        
         auto intersections = vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>>();
         for (auto i : cgal_intersections)
             intersections.push_back(make_pair(from_cgal_point(i.first), i.second));
+        
         for (auto i : intersections) std::cout << i.first.x << " " << i.first.y << std::endl;
         
         return make_pair(handle, intersections);
@@ -80,6 +82,7 @@ struct CGAL_arrangement {
         to_mono(c2, std::back_inserter(mono_curves));
         
         auto intersections = std::set<Point_2>();
+        auto added_points = std::set<Point_2>();
         
         auto int_2 = vector<pair<Point_2, vector<Arr_with_hist_2::Curve_handle>>>();
         
@@ -102,7 +105,10 @@ struct CGAL_arrangement {
                             auto orig_curves = vector<Arr_with_hist_2::Curve_handle>();
                             for (auto ocit = arr.originating_curves_begin(face); ocit != arr.originating_curves_end(face); ++ocit)
                                 orig_curves.push_back(ocit);
-                            int_2.push_back(make_pair(pt, orig_curves));
+                            if (std::find(added_points.begin(), added_points.end(), pt) == added_points.end()){
+                                int_2.push_back(make_pair(pt, orig_curves));
+                                added_points.insert(pt);
+                            }
                         }
                     }
                 }
