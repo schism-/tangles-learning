@@ -152,7 +152,7 @@ struct CGAL_arrangement {
                 // Check for intersection with faces
                 bool check_face = CGAL::assign(face, zone_elems[i]);
                 if (check_face && (std::find(intersection_data.face.begin(), intersection_data.face.end(), face) == intersection_data.face.end())){
-                    intersection_data.face.push_back(face);
+                    if (!face->is_unbounded()) intersection_data.face.push_back(face);
                 }
                 
                 // Check for intersection with vertices

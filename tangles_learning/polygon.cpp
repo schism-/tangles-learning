@@ -50,7 +50,7 @@ bool inside_polygons(const vector<polygon2r>& polys, const vec2r& p) {
 
 vector<polygon2r> parse_svg_polygons(const string& svg, real resolution) {
     auto curves = parse_svg_polylines(svg, resolution);
-    for(auto& curve : curves) curve = close_polyline(curve);
+//    for(auto& curve : curves) curve = close_polyline(curve);
     auto inside = vector<vector<bool>>(curves.size());
     for(auto i : range(curves)) {
         inside[i] = vector<bool>(curves.size(),false);
