@@ -105,9 +105,20 @@ struct Tangle {
     
     void analyze_step(){
         std::cout << "== STEP ANALYSIS ==" << std::endl;
+
+        // single analysis
         for (auto i = 0;  i < (int)curves.size(); i++){
-            // POI WRT FACE(S)
-            std::cout << "curve" << std::endl;
+            // is open?
+            std::cout << "is open?" << closed_polyline(curves[i]->curve) <<std::endl;
+            
+            std::cout << "bbox: " << curves[i]->handle->bbox() << std::endl;
+            
+            auto c_points = vector<Point_2_c>();
+            for (auto point : curves[i]->curve) c_points.push_back(Point_2_c(point.x, point.y));
+            
+            Line_2_c line;
+            linear_least_squares_fitting_2(c_points.begin(), c_points.end(), line, CGAL::Dimension_tag<0>());
+            std::cout << "main axis: " << line.direction() << std::endl;
         }
     }
     
