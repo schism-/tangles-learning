@@ -31,10 +31,10 @@ struct Shape {
 struct Curve {
     polyline2r curve;
     Curve_handle_2 handle;
-    vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>> intersections;
+    CGAL_data intersection_data;
     //Add curve attributes
-    Curve(const polyline2r& poly, const Curve_handle_2& handle, const vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>>& intersections) :
-            curve(poly), handle(handle), intersections(intersections) {};
+    Curve(const polyline2r& poly, const Curve_handle_2& handle, const CGAL_data& intersections) :
+            curve(poly), handle(handle), intersection_data(intersection_data) {};
     ~Curve() {};
     
     range2r bounds() const {
@@ -45,6 +45,7 @@ struct Curve {
 struct Tangle {
     vector<Shape*> shapes;
     vector<Curve*> curves;
+    vector<Curve*> base_curves;
     
     CGAL_arrangement* arrangement;
     
@@ -52,6 +53,7 @@ struct Tangle {
         arrangement = new CGAL_arrangement();
         shapes = vector<Shape*>();
         curves = vector<Curve*>();
+        base_curves = vector<Curve*>();
     };
     
     ~Tangle() {};
@@ -77,13 +79,19 @@ struct Tangle {
         auto svg_base = load_text_file(json_data["canvas"]);
         auto base_shapes = parse_svg_polygons(svg_base, POLY_RES);
         
+        auto first = true;
         for (auto bs : base_shapes){
-            for (auto poly : bs) add_curve(poly);
+            for (auto poly : bs){
+                if (first){
+                    first = false;
+                    add_curve(poly, true);
+                    
+                }
+                else add_curve(poly);
+            }
         }
         
-        for (auto step : json_data["steps"]){
-            std::cout << "step found" << std::endl;
-        }
+        analyze_step();
     }
     
     void update_tangle(){
@@ -95,17 +103,22 @@ struct Tangle {
         std::cout << shapes.size() << " shapes in arrangement" << std::endl;
     }
     
-    void analyze_curve(Curve* curve){
-        
+    void analyze_step(){
+        std::cout << "== STEP ANALYSIS ==" << std::endl;
+        for (auto i = 0;  i < (int)curves.size(); i++){
+            // POI WRT FACE(S)
+            std::cout << "curve" << std::endl;
+        }
     }
     
-    void add_curve(const polyline2r& curve){
+    void add_curve(const polyline2r& curve, bool is_base_curve = false){
         auto c_h = arrangement->add_curve(curve);
         auto c_obj = new Curve(curve, c_h.first, c_h.second);
-        curves.push_back(c_obj);
-        update_tangle();
         
-        analyze_curve(c_obj);
+        if (is_base_curve) base_curves.push_back(c_obj);
+        else curves.push_back(c_obj);
+        
+        update_tangle();
     }
     
     void test(){

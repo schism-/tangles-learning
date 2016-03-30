@@ -51,7 +51,7 @@ struct CGAL_arrangement {
     }
     ~CGAL_arrangement() {}
     
-    pair<Curve_handle_2, vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>>> add_curve(const polyline2r& curve) {
+    pair<Curve_handle_2, CGAL_data> add_curve(const polyline2r& curve) {
         auto cgal_curve = to_cgal_curve(curve);
         Geom_traits_2::Construct_curve_2 obj = traits.construct_curve_2_object();
         Polyline_2 pi2 = obj(cgal_curve.begin(), cgal_curve.end());
@@ -59,14 +59,9 @@ struct CGAL_arrangement {
         auto cgal_data = polyline_intersect(arr, curve);
         auto handle = insert(arr, pi2);
         std::cout << "Added curve" << std::endl;
-        std::cout << "- Intersections (" << cgal_data.point.size() << ")"<< std::endl;
-        
-        auto intersections = vector<pair<vec2r, vector<Arr_with_hist_2::Curve_handle>>>();
-        for (auto i = 0; i < (int)cgal_data.point.size(); i++){
-            intersections.push_back(make_pair(from_cgal_point(cgal_data.point[i]), cgal_data.orig_curves[i]));
-        }
-        
-        for (auto i : intersections) std::cout << i.first.x << " " << i.first.y << std::endl;
+
+        std::cout << "-H Intersections (" << cgal_data.point.size() << ")"<< std::endl;
+        for (auto i : cgal_data.point) std::cout << i.x() << " " << i.y() << std::endl;
 
         std::cout << "- V Intersections (" << cgal_data.vertex.size() << ")"<< std::endl;
         for (auto i : cgal_data.vertex) std::cout << &i << std::endl;
@@ -75,7 +70,7 @@ struct CGAL_arrangement {
         std::cout << "- F Intersections (" << cgal_data.face.size() << ")"<< std::endl;
         for (auto i : cgal_data.face) std::cout << &i << std::endl;
 
-        return make_pair(handle, intersections);
+        return make_pair(handle, cgal_data);
     }
     
     void add_curves(const vector<polyline2r>& curves) {
